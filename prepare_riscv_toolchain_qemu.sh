@@ -5,6 +5,8 @@ set -ev
 # RISC-V Clang is for cross compile with  the RISC-V Vector ISA.
 # RISC-V QEMU is used to run the test suite.
 #
+# Author: Eric Love <eric.love@sifive.com>
+#
 # Requirements: Linux host w/ working C++ compiler, git, cmake, ninja, wget, tar
 
 RISCV_TRIPLE="riscv64-unknown-linux-gnu"
