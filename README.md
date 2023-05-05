@@ -27,6 +27,8 @@ You can download the latest QEMU source code from the QEMU [download page](https
 
 You can refer to `prepare_riscv_toolchain_qemu.sh` to prepare the RISC-V toolchain and QEMU, modifying the content (e.g., toolchain version) if necessary.
 
+We also provide the prebuilt toolchain and qemu, download them from [the release page](https://github.com/sifive/prepare-riscv-toolchain-qemu/releases), and enjoy using them!
+
 ## References ##
 
 See instructions in the following links for more details:

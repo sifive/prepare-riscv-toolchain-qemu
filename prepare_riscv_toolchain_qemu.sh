@@ -2,7 +2,7 @@
 set -ev
 
 # Download & build RISC-V Clang toolchain & QEMU emulator. 
-# RISC-V Clang is for cross compile with  the RISC-V Vector ISA.
+# RISC-V Clang is for cross compile with the RISC-V Vector ISA.
 # RISC-V QEMU is used to run the test suite.
 #
 # Author: Eric Love <eric.love@sifive.com>
