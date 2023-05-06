@@ -1,0 +1,41 @@
+name: RISC-V Prebuilt Toolchain QEMU Release
+on:
+  push:
+    tags:
+      - '*'
+env:
+  TERM: xterm-256color
+jobs:
+  riscv_prebuilt_toolchain_qemu_release:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up environment
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y build-essential
+        sudo apt-get install -y cmake
+        sudo apt-get install -y ninja-build
+
+    - name: Download source and build
+      run: |
+        chmod +x prepare_riscv_toolchain_qemu.sh
+        export GIT_SSL_NO_VERIFY=1
+        ./prepare_riscv_toolchain_qemu.sh
+
+    - name: Tarball prebuilt toolchain & qemu
+      run: |
+        mkdir prebuilt-riscv-toolchain-qemu
+        mv build-toolchain-qemu/riscv-clang prebuilt-riscv-toolchain-qemu
+        mv build-toolchain-qemu/riscv-qemu prebuilt-riscv-toolchain-qemu
+        tar zcvf prebuilt-riscv-toolchain-qemu.tar.gz prebuilt-riscv-toolchain-qemu
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: prebuilt-riscv-toolchain-qemu.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
