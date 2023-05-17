@@ -33,6 +33,7 @@ if [ ! -d "$RISCV_GNU_TOOLCHAIN" ]
 then
   git clone https://github.com/riscv/riscv-gnu-toolchain.git
   pushd "$RISCV_GNU_TOOLCHAIN"
+  git checkout 2022.11.23
   git submodule update --init --recursive
   ./configure --with-cmodel=medany --prefix="$INSTALL_CLANG"
   ionice nice make linux -j `nproc` install
